@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <h1>Expense Tracker</h1>
+
+    <form id="expenseForm" action="add_expense.php" method="POST">
+        <input type="text" name="title" placeholder="Expense Title" required>
+        <input type="number" step="0.01" name="amount" placeholder="Amount" required>
+        <select name="category" required>
+            <option value="">-- Select Category --</option>
+            <option>Food</option>
+            <option>Transport</option>
+            <option>Utilities</option>
+            <option>Shopping</option>
+            <option>Other</option>
+        </select>
+        <button type="submit">Add Expense</button>
+    </form>
+
+<!-- Display Added Expenses -->
+<ul id="expenseList"></ul>
+
+<script>
+// Handle the form submission via AJAX
+document.getElementById('expenseForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    const formData = new FormData(this);
+
+    // Send data to the server using Fetch
+    fetch('add_expense.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.error) {
+            alert('Error: ' + data.error);
+        } else {
+            // Create new list item with the added expense data
+            const expenseList = document.getElementById('expenseList');
+            const newExpense = document.createElement('li');
+            
+            // Structure the list item with the response data
+            newExpense.classList.add('expense-item');
+            newExpense.innerHTML = `
+                <div class="expense-info">
+                    <strong>${data.title}</strong><br>
+                    Amount: $${data.amount}<br>
+                    Category: ${data.category}
+                </div>
+            `;
+
+            // Append new expense to the list
+            expenseList.appendChild(newExpense);
+
+            // Optionally clear form inputs after submission
+            document.getElementById('expenseForm').reset();
+        }
+    })
+    .catch(error => console.error('Error:', error));
+});
+</script>
+
+    <h2>Expense History</h2>
+    <div id="expenseList"><?php include 'get_expenses.php'; ?></div>
+</body>
+</html>

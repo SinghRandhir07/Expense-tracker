@@ -1,0 +1,190 @@
+/* Body */
+body {
+    font-family: 'Arial', sans-serif;
+    padding: 50px;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    max-width: 1000px;
+    margin: auto;
+    box-sizing: border-box;
+    color: #fff;
+    border-radius: 10px;
+}
+
+/* Headings */
+h1, h2 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+/* Form Container */
+form {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+    border: 1px solid #ddd;
+    color: #333;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Form Input & Button Styles */
+form input,
+form select,
+form button {
+    padding: 15px;
+    margin: 10px 0;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    transition: all 0.3s ease;
+}
+
+/* Focus effect on inputs and selects */
+form input:focus,
+form select:focus {
+    border-color: #2575fc;
+    box-shadow: 0 0 10px rgba(37, 117, 252, 0.3);
+    outline: none;
+}
+
+/* Button Style */
+form button {
+    background-color: #2575fc;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+form button:hover {
+    background-color: #6a11cb;
+    transform: scale(1.05);
+}
+
+/* Expense List */
+#expenseList {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 40px;
+}
+
+#expenseList li {
+    background-color: #fff;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1em;
+}
+
+.expense-info {
+    flex-grow: 1;
+    color: #333;
+}
+
+#expenseList li .icon {
+    background-color: #2575fc;
+    color: white;
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 1.2em;
+    margin-right: 10px;
+}
+
+#expenseList li span {
+    flex-grow: 1;
+    color: #555;
+}
+
+/* Hover Effect for List Items */
+#expenseList li:hover {
+    transform: translateX(5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Table for Added Expenses */
+table {
+    width: 100%;
+    margin-top: 30px;
+    background: #fff;
+    border-collapse: collapse;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    font-size: 16px;
+}
+
+th {
+    background-color: #f7f7f7;
+    color: #333;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+td {
+    border-bottom: 1px solid #ddd;
+    color: #555;
+}
+
+/* Hover effect on table rows */
+table tr:hover {
+    background-color: #f0f0f0;
+}
+
+/* Floating Action Button (FAB) */
+.fab {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #2575fc;
+    color: white;
+    font-size: 24px;
+    padding: 15px;
+    border-radius: 50%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.fab:hover {
+    background-color: #6a11cb;
+    transform: scale(1.1);
+}
+
+/* Media Query for Mobile */
+@media (max-width: 768px) {
+    body {
+        padding: 20px;
+    }
+
+    form input,
+    form select,
+    form button {
+        font-size: 14px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    #expenseList li {
+        font-size: 1em;
+    }
+
+    .fab {
+        bottom: 20px;
+        right: 20px;
+    }
+}
